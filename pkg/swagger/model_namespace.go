@@ -12,5 +12,5 @@ package swagger
 // Namespace describes the namespace
 type Namespace struct {
 	Nsmode string `json:"nsmode,omitempty"`
-	String_ string `json:"string,omitempty"`
+	String_ string `json:"value,omitempty"`
 }

@@ -12,5 +12,6 @@ Afterwards:
 
 * the missing `os` imports were added
 * `model_plugin_config_linux.go` was renamed to `model_plugin_config_linux_.go`
+* `model_namespace.go`'s `Namespace`'s `String_` field JSON name was changed from `string` to `value` to accomodate the [upstream change](https://github.com/containers/podman/commit/8eb36320ca321ba514b5388cfdb11595e61a7d49)
 
 ... to fix the compilation.
