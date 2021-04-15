@@ -4,21 +4,22 @@ All URIs are relative to *http://podman.io/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BuildImage**](ImagesCompatApi.md#BuildImage) | **Post** /build | Create image
-[**CreateImage**](ImagesCompatApi.md#CreateImage) | **Post** /images/create | Create an image
-[**ExportImage**](ImagesCompatApi.md#ExportImage) | **Get** /images/{name:.*}/get | Export an image
-[**ImageHistory**](ImagesCompatApi.md#ImageHistory) | **Get** /images/{name:.*}/history | History of an image
-[**ImportImage**](ImagesCompatApi.md#ImportImage) | **Post** /images/load | Import image
-[**InspectImage**](ImagesCompatApi.md#InspectImage) | **Get** /images/{name:.*}/json | Inspect an image
-[**ListImages**](ImagesCompatApi.md#ListImages) | **Get** /images/json | List Images
-[**PruneImages**](ImagesCompatApi.md#PruneImages) | **Post** /images/prune | Prune unused images
-[**PushImage**](ImagesCompatApi.md#PushImage) | **Post** /images/{name:.*}/push | Push Image
-[**RemoveImage**](ImagesCompatApi.md#RemoveImage) | **Delete** /images/{name:.*} | Remove Image
-[**SearchImages**](ImagesCompatApi.md#SearchImages) | **Get** /images/search | Search images
-[**TagImage**](ImagesCompatApi.md#TagImage) | **Post** /images/{name:.*}/tag | Tag an image
+[**ImageBuild**](ImagesCompatApi.md#ImageBuild) | **Post** /build | Create image
+[**ImageCreate**](ImagesCompatApi.md#ImageCreate) | **Post** /images/create | Create an image
+[**ImageDelete**](ImagesCompatApi.md#ImageDelete) | **Delete** /images/{name} | Remove Image
+[**ImageGet**](ImagesCompatApi.md#ImageGet) | **Get** /images/{name}/get | Export an image
+[**ImageGetAll**](ImagesCompatApi.md#ImageGetAll) | **Get** /images/get | Export several images
+[**ImageHistory**](ImagesCompatApi.md#ImageHistory) | **Get** /images/{name}/history | History of an image
+[**ImageInspect**](ImagesCompatApi.md#ImageInspect) | **Get** /images/{name}/json | Inspect an image
+[**ImageList**](ImagesCompatApi.md#ImageList) | **Get** /images/json | List Images
+[**ImageLoad**](ImagesCompatApi.md#ImageLoad) | **Post** /images/load | Import image
+[**ImagePrune**](ImagesCompatApi.md#ImagePrune) | **Post** /images/prune | Prune unused images
+[**ImagePush**](ImagesCompatApi.md#ImagePush) | **Post** /images/{name}/push | Push Image
+[**ImageSearch**](ImagesCompatApi.md#ImageSearch) | **Get** /images/search | Search images
+[**ImageTag**](ImagesCompatApi.md#ImageTag) | **Post** /images/{name}/tag | Tag an image
 
-# **BuildImage**
-> InlineResponse200 BuildImage(ctx, optional)
+# **ImageBuild**
+> InlineResponse2001 ImageBuild(ctx, optional)
 Create image
 
 Build an image from the given Dockerfile(s)
@@ -28,10 +29,10 @@ Build an image from the given Dockerfile(s)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiBuildImageOpts** | optional parameters | nil if no parameters
+ **optional** | ***ImagesCompatApiImageBuildOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiBuildImageOpts struct
+Optional parameters are passed through a pointer to a ImagesCompatApiImageBuildOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dockerfile** | **optional.String**| Path within the build context to the &#x60;Dockerfile&#x60;. This is ignored if remote is specified and points to an external &#x60;Dockerfile&#x60;.  | [default to Dockerfile]
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**InlineResponse2001**](inline_response_200_1.md)
 
 ### Authorization
 
@@ -74,8 +75,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **CreateImage**
-> interface{} CreateImage(ctx, optional)
+# **ImageCreate**
+> interface{} ImageCreate(ctx, optional)
 Create an image
 
 Create an image by either pulling it from a registry or importing it.
@@ -85,10 +86,10 @@ Create an image by either pulling it from a registry or importing it.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiCreateImageOpts** | optional parameters | nil if no parameters
+ **optional** | ***ImagesCompatApiImageCreateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiCreateImageOpts struct
+Optional parameters are passed through a pointer to a ImagesCompatApiImageCreateOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**optional.Interface of string**](string.md)| Image content if fromSrc parameter was used | 
@@ -107,239 +108,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-tar
+ - **Content-Type**: text/plain, application/octet-stream
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ExportImage**
-> *os.File ExportImage(ctx, name_)
-Export an image
-
-Export an image in tarball format
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| the name or ID of the container | 
-
-### Return type
-
-[***os.File**](*os.File.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ImageHistory**
-> InlineResponse2004 ImageHistory(ctx, name_)
-History of an image
-
-Return parent layers of an image.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| the name or ID of the container | 
-
-### Return type
-
-[**InlineResponse2004**](inline_response_200_4.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ImportImage**
-> ImportImage(ctx, optional)
-Import image
-
-Load a set of images and tags into a repository.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiImportImageOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiImportImageOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**optional.Interface of string**](string.md)| tarball of container image | 
- **quiet** | **optional.**| not supported | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-tar
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **InspectImage**
-> InlineResponse2005 InspectImage(ctx, name_)
-Inspect an image
-
-Return low-level information about an image.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| the name or ID of the container | 
-
-### Return type
-
-[**InlineResponse2005**](inline_response_200_5.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ListImages**
-> []ImageSummary ListImages(ctx, optional)
-List Images
-
-Returns a list of images on the server. Note that it uses a different, smaller representation of an image than inspecting a single image.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiListImagesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiListImagesOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **all** | **optional.Bool**| Show all images. Only images from a final layer (no children) are shown by default. | [default to false]
- **filters** | **optional.String**| A JSON encoded value of the filters (a &#x60;map[string][]string&#x60;) to process on the images list. Available filters: - &#x60;before&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;,  &#x60;&lt;image id&gt;&#x60; or &#x60;&lt;image@digest&gt;&#x60;) - &#x60;dangling&#x3D;true&#x60; - &#x60;label&#x3D;key&#x60; or &#x60;label&#x3D;\&quot;key&#x3D;value\&quot;&#x60; of an image label - &#x60;reference&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;) - &#x60;since&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;,  &#x60;&lt;image id&gt;&#x60; or &#x60;&lt;image@digest&gt;&#x60;)  | 
- **digests** | **optional.Bool**| Not supported | [default to false]
-
-### Return type
-
-[**[]ImageSummary**](ImageSummary.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **PruneImages**
-> []ImageDeleteResponse PruneImages(ctx, optional)
-Prune unused images
-
-Remove images from local storage that are not being used by a container
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiPruneImagesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiPruneImagesOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filters** | **optional.String**| filters to apply to image pruning, encoded as JSON (map[string][]string). Available filters:   - &#x60;dangling&#x3D;&lt;boolean&gt;&#x60; When set to &#x60;true&#x60; (or &#x60;1&#x60;), prune only      unused *and* untagged images. When set to &#x60;false&#x60;      (or &#x60;0&#x60;), all unused images are pruned.   - &#x60;until&#x3D;&lt;string&gt;&#x60; Prune images created before this timestamp. The &#x60;&lt;timestamp&gt;&#x60; can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. &#x60;10m&#x60;, &#x60;1h30m&#x60;) computed relative to the daemon machine’s time.   - &#x60;label&#x60; (&#x60;label&#x3D;&lt;key&gt;&#x60;, &#x60;label&#x3D;&lt;key&gt;&#x3D;&lt;value&gt;&#x60;, &#x60;label!&#x3D;&lt;key&gt;&#x60;, or &#x60;label!&#x3D;&lt;key&gt;&#x3D;&lt;value&gt;&#x60;) Prune images with (or without, in case &#x60;label!&#x3D;...&#x60; is used) the specified labels.  | 
-
-### Return type
-
-[**[]ImageDeleteResponse**](ImageDeleteResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **PushImage**
-> *os.File PushImage(ctx, name_, optional)
-Push Image
-
-Push an image to a container registry
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| Name of image to push. | 
- **optional** | ***ImagesCompatApiPushImageOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiPushImageOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **tag** | **optional.String**| The tag to associate with the image on the registry. | 
- **xRegistryAuth** | **optional.String**| A base64-encoded auth configuration. | 
-
-### Return type
-
-[***os.File**](*os.File.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **RemoveImage**
-> []ImageDeleteResponse RemoveImage(ctx, name_, optional)
+# **ImageDelete**
+> []ImageDeleteResponse ImageDelete(ctx, name, optional)
 Remove Image
 
 Delete an image from local storage
@@ -349,11 +124,11 @@ Delete an image from local storage
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| name or ID of image to delete | 
- **optional** | ***ImagesCompatApiRemoveImageOpts** | optional parameters | nil if no parameters
+  **name** | **string**| name or ID of image to delete | 
+ **optional** | ***ImagesCompatApiImageDeleteOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiRemoveImageOpts struct
+Optional parameters are passed through a pointer to a ImagesCompatApiImageDeleteOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -375,26 +150,102 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **SearchImages**
-> InlineResponse2006 SearchImages(ctx, optional)
-Search images
+# **ImageGet**
+> *os.File ImageGet(ctx, name)
+Export an image
 
-Search registries for an image
+Export an image in tarball format
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ImagesCompatApiSearchImagesOpts** | optional parameters | nil if no parameters
+  **name** | **string**| the name or ID of the container | 
 
-### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiSearchImagesOpts struct
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-tar
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageGetAll**
+> *os.File ImageGetAll(ctx, names)
+Export several images
+
+Get a tarball containing all images and metadata for several image repositories
+
+### Required Parameters
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **term** | **optional.String**| term to search | 
- **limit** | **optional.Int32**| maximum number of results | 
- **filters** | **optional.String**| A JSON encoded value of the filters (a &#x60;map[string][]string&#x60;) to process on the images list. Available filters: - &#x60;is-automated&#x3D;(true|false)&#x60; - &#x60;is-official&#x3D;(true|false)&#x60; - &#x60;stars&#x3D;&lt;number&gt;&#x60; Matches images that has at least &#x27;number&#x27; stars.  | 
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **names** | **string**| one or more image names or IDs comma separated | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageHistory**
+> InlineResponse2005 ImageHistory(ctx, name)
+History of an image
+
+Return parent layers of an image.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| the name or ID of the container | 
+
+### Return type
+
+[**InlineResponse2005**](inline_response_200_5.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageInspect**
+> InlineResponse2006 ImageInspect(ctx, name)
+Inspect an image
+
+Return low-level information about an image.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| the name or ID of the container | 
 
 ### Return type
 
@@ -411,8 +262,190 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TagImage**
-> TagImage(ctx, name_, optional)
+# **ImageList**
+> []ImageSummary ImageList(ctx, optional)
+List Images
+
+Returns a list of images on the server. Note that it uses a different, smaller representation of an image than inspecting a single image.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ImagesCompatApiImageListOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ImagesCompatApiImageListOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **all** | **optional.Bool**| Show all images. Only images from a final layer (no children) are shown by default. | [default to false]
+ **filters** | **optional.String**| A JSON encoded value of the filters (a &#x60;map[string][]string&#x60;) to process on the images list. Available filters: - &#x60;before&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;,  &#x60;&lt;image id&gt;&#x60; or &#x60;&lt;image@digest&gt;&#x60;) - &#x60;dangling&#x3D;true&#x60; - &#x60;label&#x3D;key&#x60; or &#x60;label&#x3D;\&quot;key&#x3D;value\&quot;&#x60; of an image label - &#x60;reference&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;) - &#x60;since&#x60;&#x3D;(&#x60;&lt;image-name&gt;[:&lt;tag&gt;]&#x60;,  &#x60;&lt;image id&gt;&#x60; or &#x60;&lt;image@digest&gt;&#x60;)  | 
+ **digests** | **optional.Bool**| Not supported | [default to false]
+
+### Return type
+
+[**[]ImageSummary**](ImageSummary.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageLoad**
+> ImageLoad(ctx, optional)
+Import image
+
+Load a set of images and tags into a repository.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ImagesCompatApiImageLoadOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ImagesCompatApiImageLoadOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**optional.Interface of string**](string.md)| tarball of container image | 
+ **quiet** | **optional.**| not supported | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-tar
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImagePrune**
+> []ImageDeleteResponse ImagePrune(ctx, optional)
+Prune unused images
+
+Remove images from local storage that are not being used by a container
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ImagesCompatApiImagePruneOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ImagesCompatApiImagePruneOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filters** | **optional.String**| filters to apply to image pruning, encoded as JSON (map[string][]string). Available filters:   - &#x60;dangling&#x3D;&lt;boolean&gt;&#x60; When set to &#x60;true&#x60; (or &#x60;1&#x60;), prune only      unused *and* untagged images. When set to &#x60;false&#x60;      (or &#x60;0&#x60;), all unused images are pruned.   - &#x60;until&#x3D;&lt;string&gt;&#x60; Prune images created before this timestamp. The &#x60;&lt;timestamp&gt;&#x60; can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. &#x60;10m&#x60;, &#x60;1h30m&#x60;) computed relative to the daemon machine’s time.   - &#x60;label&#x60; (&#x60;label&#x3D;&lt;key&gt;&#x60;, &#x60;label&#x3D;&lt;key&gt;&#x3D;&lt;value&gt;&#x60;, &#x60;label!&#x3D;&lt;key&gt;&#x60;, or &#x60;label!&#x3D;&lt;key&gt;&#x3D;&lt;value&gt;&#x60;) Prune images with (or without, in case &#x60;label!&#x3D;...&#x60; is used) the specified labels.  | 
+
+### Return type
+
+[**[]ImageDeleteResponse**](ImageDeleteResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImagePush**
+> *os.File ImagePush(ctx, name, optional)
+Push Image
+
+Push an image to a container registry
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| Name of image to push. | 
+ **optional** | ***ImagesCompatApiImagePushOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ImagesCompatApiImagePushOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **tag** | **optional.String**| The tag to associate with the image on the registry. | 
+ **all** | **optional.Bool**| All indicates whether to push all images related to the image list | 
+ **compress** | **optional.Bool**| use compression on image | 
+ **destination** | **optional.String**| destination name for the image being pushed | 
+ **xRegistryAuth** | **optional.String**| A base64-encoded auth configuration. | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageSearch**
+> InlineResponse2007 ImageSearch(ctx, optional)
+Search images
+
+Search registries for an image
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ImagesCompatApiImageSearchOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ImagesCompatApiImageSearchOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **term** | **optional.String**| term to search | 
+ **limit** | **optional.Int32**| maximum number of results | 
+ **filters** | **optional.String**| A JSON encoded value of the filters (a &#x60;map[string][]string&#x60;) to process on the images list. Available filters: - &#x60;is-automated&#x3D;(true|false)&#x60; - &#x60;is-official&#x3D;(true|false)&#x60; - &#x60;stars&#x3D;&lt;number&gt;&#x60; Matches images that has at least &#x27;number&#x27; stars.  | 
+ **listTags** | **optional.Bool**| list the available tags in the repository | 
+
+### Return type
+
+[**InlineResponse2007**](inline_response_200_7.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ImageTag**
+> ImageTag(ctx, name, optional)
 Tag an image
 
 Tag an image so that it becomes part of a repository.
@@ -422,11 +455,11 @@ Tag an image so that it becomes part of a repository.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| the name or ID of the container | 
- **optional** | ***ImagesCompatApiTagImageOpts** | optional parameters | nil if no parameters
+  **name** | **string**| the name or ID of the container | 
+ **optional** | ***ImagesCompatApiImageTagOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ImagesCompatApiTagImageOpts struct
+Optional parameters are passed through a pointer to a ImagesCompatApiImageTagOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 

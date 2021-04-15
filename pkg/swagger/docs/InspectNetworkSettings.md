@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **SandboxID** | **string** |  | [optional] [default to null]
 **SandboxKey** | **string** |  | [optional] [default to null]
 **SecondaryIPAddresses** | **[]string** | SecondaryIPAddresses is a list of extra IP Addresses that the container has been assigned in this network. | [optional] [default to null]
-**SecondaryIPv6Addresses** | **[]string** | SecondaryIPv6Addresses is a list of extra IPv6 Addresses that the container has been assigned in this networ. | [optional] [default to null]
+**SecondaryIPv6Addresses** | **[]string** | SecondaryIPv6Addresses is a list of extra IPv6 Addresses that the container has been assigned in this network. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

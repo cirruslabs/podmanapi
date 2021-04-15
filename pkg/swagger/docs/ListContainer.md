@@ -3,8 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AutoRemove** | **bool** | AutoRemove | [optional] [default to null]
 **Command** | **[]string** | Container command | [optional] [default to null]
-**Created** | **int64** | Container creation time | [optional] [default to null]
+**Created** | [**time.Time**](time.Time.md) | Container creation time | [optional] [default to null]
 **CreatedAt** | **string** | Human readable container creation time. | [optional] [default to null]
 **ExitCode** | **int32** | If container has exited, the return code from the command | [optional] [default to null]
 **Exited** | **bool** | If container has exited/stopped | [optional] [default to null]
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **Mounts** | **[]string** | User volume mounts | [optional] [default to null]
 **Names** | **[]string** | The names assigned to the container | [optional] [default to null]
 **Namespaces** | [***ListContainerNamespaces**](ListContainerNamespaces.md) |  | [optional] [default to null]
+**Networks** | **[]string** | The network names assigned to the container | [optional] [default to null]
 **Pid** | **int64** | The process id of the container | [optional] [default to null]
 **Pod** | **string** | If the container is part of Pod, the Pod ID. Requires the pod boolean to be set | [optional] [default to null]
 **PodName** | **string** | If the container is part of Pod, the Pod name. Requires the pod boolean to be set | [optional] [default to null]

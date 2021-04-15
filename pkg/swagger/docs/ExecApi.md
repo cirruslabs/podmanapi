@@ -4,13 +4,13 @@ All URIs are relative to *http://podman.io/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LibpodCreateExec**](ExecApi.md#LibpodCreateExec) | **Post** /libpod/containers/{name}/exec | Create an exec instance
-[**LibpodInspectExec**](ExecApi.md#LibpodInspectExec) | **Get** /libpod/exec/{id}/json | Inspect an exec instance
-[**LibpodResizeExec**](ExecApi.md#LibpodResizeExec) | **Post** /libpod/exec/{id}/resize | Resize an exec instance
-[**LibpodStartExec**](ExecApi.md#LibpodStartExec) | **Post** /libpod/exec/{id}/start | Start an exec instance
+[**ContainerExecLibpod**](ExecApi.md#ContainerExecLibpod) | **Post** /libpod/containers/{name}/exec | Create an exec instance
+[**ExecInspectLibpod**](ExecApi.md#ExecInspectLibpod) | **Get** /libpod/exec/{id}/json | Inspect an exec instance
+[**ExecResizeLibpod**](ExecApi.md#ExecResizeLibpod) | **Post** /libpod/exec/{id}/resize | Resize an exec instance
+[**ExecStartLibpod**](ExecApi.md#ExecStartLibpod) | **Post** /libpod/exec/{id}/start | Start an exec instance
 
-# **LibpodCreateExec**
-> LibpodCreateExec(ctx, name, optional)
+# **ContainerExecLibpod**
+> ContainerExecLibpod(ctx, name, optional)
 Create an exec instance
 
 Create an exec session to run a command inside a running container. Exec sessions will be automatically removed 5 minutes after they exit.
@@ -21,10 +21,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**| name of container | 
- **optional** | ***ExecApiLibpodCreateExecOpts** | optional parameters | nil if no parameters
+ **optional** | ***ExecApiContainerExecLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ExecApiLibpodCreateExecOpts struct
+Optional parameters are passed through a pointer to a ExecApiContainerExecLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -45,8 +45,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodInspectExec**
-> LibpodInspectExec(ctx, id)
+# **ExecInspectLibpod**
+> ExecInspectLibpod(ctx, id)
 Inspect an exec instance
 
 Return low-level information about an exec instance.
@@ -73,8 +73,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodResizeExec**
-> LibpodResizeExec(ctx, id, optional)
+# **ExecResizeLibpod**
+> ExecResizeLibpod(ctx, id, optional)
 Resize an exec instance
 
 Resize the TTY session used by an exec instance. This endpoint only works if tty was specified as part of creating and starting the exec instance. 
@@ -85,10 +85,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **id** | **string**| Exec instance ID | 
- **optional** | ***ExecApiLibpodResizeExecOpts** | optional parameters | nil if no parameters
+ **optional** | ***ExecApiExecResizeLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ExecApiLibpodResizeExecOpts struct
+Optional parameters are passed through a pointer to a ExecApiExecResizeLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -110,8 +110,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodStartExec**
-> LibpodStartExec(ctx, id, optional)
+# **ExecStartLibpod**
+> ExecStartLibpod(ctx, id, optional)
 Start an exec instance
 
 Starts a previously set up exec instance. If detach is true, this endpoint returns immediately after starting the command. Otherwise, it sets up an interactive session with the command.
@@ -122,10 +122,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **id** | **string**| Exec instance ID | 
- **optional** | ***ExecApiLibpodStartExecOpts** | optional parameters | nil if no parameters
+ **optional** | ***ExecApiExecStartLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a ExecApiLibpodStartExecOpts struct
+Optional parameters are passed through a pointer to a ExecApiExecStartLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CPU** | **string** |  | [optional] [default to null]
 **Mem** | **string** |  | [optional] [default to null]
 **MemUsage** | **string** |  | [optional] [default to null]
+**MemUsageBytes** | **string** |  | [optional] [default to null]
 **Name** | **string** |  | [optional] [default to null]
 **NetIO** | **string** |  | [optional] [default to null]
 **PIDS** | **string** |  | [optional] [default to null]

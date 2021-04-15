@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Aliases** | [**map[string][]string**](array.md) | Aliases are a list of network-scoped aliases for container Optional | [optional] [default to null]
 **CniNetworks** | **[]string** | CNINetworks is a list of CNI networks to join the container to. If this list is empty, the default CNI network will be joined instead. If at least one entry is present, we will not join the default network (unless it is part of this list). Only available if NetNS is set to bridge. Optional. | [optional] [default to null]
 **DnsOption** | **[]string** | DNSOptions is a set of DNS options that will be used in the container&#x27;s resolv.conf, replacing the host&#x27;s DNS options which are used by default. Conflicts with UseImageResolvConf. Optional. | [optional] [default to null]
 **DnsSearch** | **[]string** | DNSSearch is a set of DNS search domains that will be used in the container&#x27;s resolv.conf, replacing the host&#x27;s DNS search domains which are used by default. Conflicts with UseImageResolvConf. Optional. | [optional] [default to null]

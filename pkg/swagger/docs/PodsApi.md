@@ -4,118 +4,26 @@ All URIs are relative to *http://podman.io/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePod**](PodsApi.md#CreatePod) | **Post** /libpod/pods/create | Create a pod
-[**InspectPod**](PodsApi.md#InspectPod) | **Get** /libpod/pods/{name}/json | Inspect pod
-[**KillPod**](PodsApi.md#KillPod) | **Post** /libpod/pods/{name}/kill | Kill a pod
-[**LibpodGenerateKube**](PodsApi.md#LibpodGenerateKube) | **Get** /libpod/generate/{name:.*}/kube | Generate a Kubernetes YAML file.
-[**LibpodGenerateSystemd**](PodsApi.md#LibpodGenerateSystemd) | **Get** /libpod/generate/{name:.*}/systemd | Generate Systemd Units
-[**LibpodPlayKube**](PodsApi.md#LibpodPlayKube) | **Post** /libpod/play/kube | Play a Kubernetes YAML file.
-[**ListPods**](PodsApi.md#ListPods) | **Get** /libpod/pods/json | List pods
-[**PausePod**](PodsApi.md#PausePod) | **Post** /libpod/pods/{name}/pause | Pause a pod
-[**PodExists**](PodsApi.md#PodExists) | **Get** /libpod/pods/{name}/exists | Pod exists
-[**PrunePods**](PodsApi.md#PrunePods) | **Post** /libpod/pods/prune | Prune unused pods
-[**RemovePod**](PodsApi.md#RemovePod) | **Delete** /libpod/pods/{name} | Remove pod
-[**RestartPod**](PodsApi.md#RestartPod) | **Post** /libpod/pods/{name}/restart | Restart a pod
-[**StartPod**](PodsApi.md#StartPod) | **Post** /libpod/pods/{name}/start | Start a pod
-[**StatsPod**](PodsApi.md#StatsPod) | **Get** /libpod/pods/stats | Get stats for one or more pods
-[**StopPod**](PodsApi.md#StopPod) | **Post** /libpod/pods/{name}/stop | Stop a pod
-[**TopPod**](PodsApi.md#TopPod) | **Get** /libpod/pods/{name}/top | List processes
-[**UnpausePod**](PodsApi.md#UnpausePod) | **Post** /libpod/pods/{name}/unpause | Unpause a pod
+[**GenerateKubeLibpod**](PodsApi.md#GenerateKubeLibpod) | **Get** /libpod/generate/kube | Generate a Kubernetes YAML file.
+[**GenerateSystemdLibpod**](PodsApi.md#GenerateSystemdLibpod) | **Get** /libpod/generate/{name}/systemd | Generate Systemd Units
+[**PlayKubeLibpod**](PodsApi.md#PlayKubeLibpod) | **Post** /libpod/play/kube | Play a Kubernetes YAML file.
+[**PodCreateLibpod**](PodsApi.md#PodCreateLibpod) | **Post** /libpod/pods/create | Create a pod
+[**PodDeleteLibpod**](PodsApi.md#PodDeleteLibpod) | **Delete** /libpod/pods/{name} | Remove pod
+[**PodExistsLibpod**](PodsApi.md#PodExistsLibpod) | **Get** /libpod/pods/{name}/exists | Pod exists
+[**PodInspectLibpod**](PodsApi.md#PodInspectLibpod) | **Get** /libpod/pods/{name}/json | Inspect pod
+[**PodKillLibpod**](PodsApi.md#PodKillLibpod) | **Post** /libpod/pods/{name}/kill | Kill a pod
+[**PodListLibpod**](PodsApi.md#PodListLibpod) | **Get** /libpod/pods/json | List pods
+[**PodPauseLibpod**](PodsApi.md#PodPauseLibpod) | **Post** /libpod/pods/{name}/pause | Pause a pod
+[**PodPruneLibpod**](PodsApi.md#PodPruneLibpod) | **Post** /libpod/pods/prune | Prune unused pods
+[**PodRestartLibpod**](PodsApi.md#PodRestartLibpod) | **Post** /libpod/pods/{name}/restart | Restart a pod
+[**PodStartLibpod**](PodsApi.md#PodStartLibpod) | **Post** /libpod/pods/{name}/start | Start a pod
+[**PodStatsAllLibpod**](PodsApi.md#PodStatsAllLibpod) | **Get** /libpod/pods/stats | Get stats for one or more pods
+[**PodStopLibpod**](PodsApi.md#PodStopLibpod) | **Post** /libpod/pods/{name}/stop | Stop a pod
+[**PodTopLibpod**](PodsApi.md#PodTopLibpod) | **Get** /libpod/pods/{name}/top | List processes
+[**PodUnpauseLibpod**](PodsApi.md#PodUnpauseLibpod) | **Post** /libpod/pods/{name}/unpause | Unpause a pod
 
-# **CreatePod**
-> CreatePod(ctx, optional)
-Create a pod
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PodsApiCreatePodOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiCreatePodOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**optional.Interface of PodSpecGenerator**](PodSpecGenerator.md)| attributes for creating a pod | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-tar
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **InspectPod**
-> InlineResponse20011 InspectPod(ctx, name)
-Inspect pod
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| the name or ID of the pod | 
-
-### Return type
-
-[**InlineResponse20011**](inline_response_200_11.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **KillPod**
-> PodKillReport KillPod(ctx, name, optional)
-Kill a pod
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| the name or ID of the pod | 
- **optional** | ***PodsApiKillPodOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiKillPodOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **signal** | **optional.String**| signal to be sent to pod | [default to SIGKILL]
-
-### Return type
-
-[**PodKillReport**](PodKillReport.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **LibpodGenerateKube**
-> *os.File LibpodGenerateKube(ctx, name_, optional)
+# **GenerateKubeLibpod**
+> *os.File GenerateKubeLibpod(ctx, names, optional)
 Generate a Kubernetes YAML file.
 
 Generate Kubernetes YAML based on a pod or container.
@@ -125,11 +33,11 @@ Generate Kubernetes YAML based on a pod or container.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| Name or ID of the container or pod. | 
- **optional** | ***PodsApiLibpodGenerateKubeOpts** | optional parameters | nil if no parameters
+  **names** | [**[]string**](string.md)| Name or ID of the container or pod. | 
+ **optional** | ***PodsApiGenerateKubeLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiLibpodGenerateKubeOpts struct
+Optional parameters are passed through a pointer to a PodsApiGenerateKubeLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -150,8 +58,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodGenerateSystemd**
-> map[string]string LibpodGenerateSystemd(ctx, name_, optional)
+# **GenerateSystemdLibpod**
+> map[string]string GenerateSystemdLibpod(ctx, name, optional)
 Generate Systemd Units
 
 Generate Systemd Units based on a pod or container.
@@ -161,16 +69,17 @@ Generate Systemd Units based on a pod or container.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name_** | **string**| Name or ID of the container or pod. | 
- **optional** | ***PodsApiLibpodGenerateSystemdOpts** | optional parameters | nil if no parameters
+  **name** | **string**| Name or ID of the container or pod. | 
+ **optional** | ***PodsApiGenerateSystemdLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiLibpodGenerateSystemdOpts struct
+Optional parameters are passed through a pointer to a PodsApiGenerateSystemdLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **useName** | **optional.Bool**| Use container/pod names instead of IDs. | [default to false]
  **new** | **optional.Bool**| Create a new container instead of starting an existing one. | [default to false]
+ **noHeader** | **optional.Bool**| Do not generate the header including the Podman version and the timestamp. | [default to false]
  **time** | **optional.Int32**| Stop timeout override. | [default to 10]
  **restartPolicy** | **optional.String**| Systemd restart-policy. | [default to on-failure]
  **containerPrefix** | **optional.String**| Systemd unit name prefix for containers. | [default to container]
@@ -192,8 +101,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodPlayKube**
-> PlayKubeReport LibpodPlayKube(ctx, optional)
+# **PlayKubeLibpod**
+> PlayKubeReport PlayKubeLibpod(ctx, optional)
 Play a Kubernetes YAML file.
 
 Create and run pods based on a Kubernetes YAML file (pod or service kind).
@@ -203,15 +112,17 @@ Create and run pods based on a Kubernetes YAML file (pod or service kind).
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PodsApiLibpodPlayKubeOpts** | optional parameters | nil if no parameters
+ **optional** | ***PodsApiPlayKubeLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiLibpodPlayKubeOpts struct
+Optional parameters are passed through a pointer to a PodsApiPlayKubeLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**optional.Interface of string**](string.md)| Kubernetes YAML file. | 
  **network** | **optional.**| Connect the pod to this network. | 
  **tlsVerify** | **optional.**| Require HTTPS and verify signatures when contacting registries. | [default to true]
+ **logDriver** | **optional.**| Logging driver for the containers in the pod. | 
+ **start** | **optional.**| Start the pod after creating it. | [default to true]
 
 ### Return type
 
@@ -228,26 +139,26 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ListPods**
-> []ListPodsReport ListPods(ctx, optional)
-List pods
+# **PodCreateLibpod**
+> IdResponse PodCreateLibpod(ctx, optional)
+Create a pod
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PodsApiListPodsOpts** | optional parameters | nil if no parameters
+ **optional** | ***PodsApiPodCreateLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiListPodsOpts struct
+Optional parameters are passed through a pointer to a PodsApiPodCreateLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filters** | **optional.String**| needs description and plumbing for filters | 
+ **body** | [**optional.Interface of PodSpecGenerator**](PodSpecGenerator.md)| attributes for creating a pod | 
 
 ### Return type
 
-[**[]ListPodsReport**](ListPodsReport.md)
+[**IdResponse**](IdResponse.md)
 
 ### Authorization
 
@@ -255,16 +166,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, application/x-tar
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PausePod**
-> PodPauseReport PausePod(ctx, name)
-Pause a pod
-
-Pause a pod
+# **PodDeleteLibpod**
+> PodRmReport PodDeleteLibpod(ctx, name, optional)
+Remove pod
 
 ### Required Parameters
 
@@ -272,10 +181,18 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**| the name or ID of the pod | 
+ **optional** | ***PodsApiPodDeleteLibpodOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PodsApiPodDeleteLibpodOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **force** | **optional.Bool**| force removal of a running pod by first stopping all containers, then removing all containers in the pod | 
 
 ### Return type
 
-[**PodPauseReport**](PodPauseReport.md)
+[**PodRmReport**](PodRmReport.md)
 
 ### Authorization
 
@@ -288,8 +205,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PodExists**
-> PodExists(ctx, name)
+# **PodExistsLibpod**
+> PodExistsLibpod(ctx, name)
 Pod exists
 
 Check if a pod exists by name or ID
@@ -316,8 +233,128 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PrunePods**
-> PodPruneReport PrunePods(ctx, )
+# **PodInspectLibpod**
+> InlineResponse20013 PodInspectLibpod(ctx, name)
+Inspect pod
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| the name or ID of the pod | 
+
+### Return type
+
+[**InlineResponse20013**](inline_response_200_13.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PodKillLibpod**
+> PodKillReport PodKillLibpod(ctx, name, optional)
+Kill a pod
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| the name or ID of the pod | 
+ **optional** | ***PodsApiPodKillLibpodOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PodsApiPodKillLibpodOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **signal** | **optional.String**| signal to be sent to pod | [default to SIGKILL]
+
+### Return type
+
+[**PodKillReport**](PodKillReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PodListLibpod**
+> []ListPodsReport PodListLibpod(ctx, optional)
+List pods
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***PodsApiPodListLibpodOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PodsApiPodListLibpodOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filters** | **optional.String**| needs description and plumbing for filters | 
+
+### Return type
+
+[**[]ListPodsReport**](ListPodsReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PodPauseLibpod**
+> PodPauseReport PodPauseLibpod(ctx, name)
+Pause a pod
+
+Pause a pod
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **name** | **string**| the name or ID of the pod | 
+
+### Return type
+
+[**PodPauseReport**](PodPauseReport.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PodPruneLibpod**
+> PodPruneReport PodPruneLibpod(ctx, )
 Prune unused pods
 
 ### Required Parameters
@@ -338,42 +375,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **RemovePod**
-> PodRmReport RemovePod(ctx, name, optional)
-Remove pod
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**| the name or ID of the pod | 
- **optional** | ***PodsApiRemovePodOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiRemovePodOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **force** | **optional.Bool**| force removal of a running pod by first stopping all containers, then removing all containers in the pod | 
-
-### Return type
-
-[**PodRmReport**](PodRmReport.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **RestartPod**
-> PodRestartReport RestartPod(ctx, name)
+# **PodRestartLibpod**
+> PodRestartReport PodRestartLibpod(ctx, name)
 Restart a pod
 
 ### Required Parameters
@@ -398,8 +401,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **StartPod**
-> PodStartReport StartPod(ctx, name)
+# **PodStartLibpod**
+> PodStartReport PodStartLibpod(ctx, name)
 Start a pod
 
 ### Required Parameters
@@ -424,8 +427,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **StatsPod**
-> InlineResponse2002 StatsPod(ctx, optional)
+# **PodStatsAllLibpod**
+> InlineResponse2003 PodStatsAllLibpod(ctx, optional)
 Get stats for one or more pods
 
 Display a live stream of resource usage statistics for the containers in one or more pods
@@ -435,10 +438,10 @@ Display a live stream of resource usage statistics for the containers in one or 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PodsApiStatsPodOpts** | optional parameters | nil if no parameters
+ **optional** | ***PodsApiPodStatsAllLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiStatsPodOpts struct
+Optional parameters are passed through a pointer to a PodsApiPodStatsAllLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **all** | **optional.Bool**| Provide statistics for all running pods. | 
@@ -446,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](inline_response_200_2.md)
+[**InlineResponse2003**](inline_response_200_3.md)
 
 ### Authorization
 
@@ -459,8 +462,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **StopPod**
-> PodStopReport StopPod(ctx, name, optional)
+# **PodStopLibpod**
+> PodStopReport PodStopLibpod(ctx, name, optional)
 Stop a pod
 
 ### Required Parameters
@@ -469,10 +472,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**| the name or ID of the pod | 
- **optional** | ***PodsApiStopPodOpts** | optional parameters | nil if no parameters
+ **optional** | ***PodsApiPodStopLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiStopPodOpts struct
+Optional parameters are passed through a pointer to a PodsApiPodStopLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -493,8 +496,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **TopPod**
-> InlineResponse2002 TopPod(ctx, name, optional)
+# **PodTopLibpod**
+> InlineResponse2003 PodTopLibpod(ctx, name, optional)
 List processes
 
 List processes running inside a pod
@@ -505,10 +508,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**| Name of pod to query for processes  | 
- **optional** | ***PodsApiTopPodOpts** | optional parameters | nil if no parameters
+ **optional** | ***PodsApiPodTopLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a PodsApiTopPodOpts struct
+Optional parameters are passed through a pointer to a PodsApiPodTopLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -517,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](inline_response_200_2.md)
+[**InlineResponse2003**](inline_response_200_3.md)
 
 ### Authorization
 
@@ -530,8 +533,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **UnpausePod**
-> PodUnpauseReport UnpausePod(ctx, name)
+# **PodUnpauseLibpod**
+> PodUnpauseReport PodUnpauseLibpod(ctx, name)
 Unpause a pod
 
 ### Required Parameters

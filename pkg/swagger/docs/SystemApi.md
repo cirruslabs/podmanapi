@@ -4,15 +4,15 @@ All URIs are relative to *http://podman.io/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Df**](SystemApi.md#Df) | **Get** /libpod/system/df | Show disk usage
-[**LibpodGetEvents**](SystemApi.md#LibpodGetEvents) | **Get** /libpod/events | Get events
-[**LibpodGetInfo**](SystemApi.md#LibpodGetInfo) | **Get** /libpod/info | Get info
-[**LibpodPingGet**](SystemApi.md#LibpodPingGet) | **Get** /libpod/_ping | Ping service
-[**PruneSystem**](SystemApi.md#PruneSystem) | **Post** /libpod/system/prune | Prune unused data
-[**SystemVersion**](SystemApi.md#SystemVersion) | **Get** /libpod/version | Component Version information
+[**SystemDataUsageLibpod**](SystemApi.md#SystemDataUsageLibpod) | **Get** /libpod/system/df | Show disk usage
+[**SystemEventsLibpod**](SystemApi.md#SystemEventsLibpod) | **Get** /libpod/events | Get events
+[**SystemInfoLibpod**](SystemApi.md#SystemInfoLibpod) | **Get** /libpod/info | Get info
+[**SystemPing**](SystemApi.md#SystemPing) | **Get** /libpod/_ping | Ping service
+[**SystemPruneLibpod**](SystemApi.md#SystemPruneLibpod) | **Post** /libpod/system/prune | Prune unused data
+[**SystemVersionLibpod**](SystemApi.md#SystemVersionLibpod) | **Get** /libpod/version | Component Version information
 
-# **Df**
-> InlineResponse20012 Df(ctx, )
+# **SystemDataUsageLibpod**
+> InlineResponse20014 SystemDataUsageLibpod(ctx, )
 Show disk usage
 
 Return information about disk usage for containers, images, and volumes
@@ -22,7 +22,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20012**](inline_response_200_12.md)
+[**InlineResponse20014**](inline_response_200_14.md)
 
 ### Authorization
 
@@ -35,8 +35,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodGetEvents**
-> LibpodGetEvents(ctx, optional)
+# **SystemEventsLibpod**
+> SystemEventsLibpod(ctx, optional)
 Get events
 
 Returns events filtered on query parameters
@@ -46,10 +46,10 @@ Returns events filtered on query parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***SystemApiLibpodGetEventsOpts** | optional parameters | nil if no parameters
+ **optional** | ***SystemApiSystemEventsLibpodOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a pointer to a SystemApiLibpodGetEventsOpts struct
+Optional parameters are passed through a pointer to a SystemApiSystemEventsLibpodOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **since** | **optional.String**| start streaming events from this time | 
@@ -72,8 +72,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodGetInfo**
-> Info LibpodGetInfo(ctx, )
+# **SystemInfoLibpod**
+> Info SystemInfoLibpod(ctx, )
 Get info
 
 Returns information on the system and libpod configuration
@@ -96,8 +96,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **LibpodPingGet**
-> string LibpodPingGet(ctx, )
+# **SystemPing**
+> string SystemPing(ctx, )
 Ping service
 
 Return protocol information in response headers. `HEAD /libpod/_ping` is also supported. `/_ping` is available for compatibility with other engines. The '_ping' endpoints are not versioned. 
@@ -120,8 +120,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PruneSystem**
-> InlineResponse20013 PruneSystem(ctx, )
+# **SystemPruneLibpod**
+> InlineResponse20015 SystemPruneLibpod(ctx, )
 Prune unused data
 
 ### Required Parameters
@@ -129,7 +129,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20013**](inline_response_200_13.md)
+[**InlineResponse20015**](inline_response_200_15.md)
 
 ### Authorization
 
@@ -142,8 +142,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **SystemVersion**
-> InlineResponse20014 SystemVersion(ctx, )
+# **SystemVersionLibpod**
+> InlineResponse20016 SystemVersionLibpod(ctx, )
 Component Version information
 
 ### Required Parameters
@@ -151,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20014**](inline_response_200_14.md)
+[**InlineResponse20016**](inline_response_200_16.md)
 
 ### Authorization
 

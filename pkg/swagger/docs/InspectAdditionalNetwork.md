@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalMACAddresses** | **[]string** | AdditionalMacAddresses is a set of additional MAC Addresses beyond the first. CNI may configure more than one interface for a single network, which can cause this. | [optional] [default to null]
+**Aliases** | **[]string** | Aliases are any network aliases the container has in this network. | [optional] [default to null]
 **DriverOpts** | **map[string]string** | DriverOpts is presently unused and maintained exclusively for compatibility. | [optional] [default to null]
 **EndpointID** | **string** | EndpointID is unused, maintained exclusively for compatibility. | [optional] [default to null]
 **Gateway** | **string** | Gateway is the IP address of the gateway this network will use. | [optional] [default to null]
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 **MacAddress** | **string** | MacAddress is the MAC address for the interface in this network. | [optional] [default to null]
 **NetworkID** | **string** | Name of the network we&#x27;re connecting to. | [optional] [default to null]
 **SecondaryIPAddresses** | **[]string** | SecondaryIPAddresses is a list of extra IP Addresses that the container has been assigned in this network. | [optional] [default to null]
-**SecondaryIPv6Addresses** | **[]string** | SecondaryIPv6Addresses is a list of extra IPv6 Addresses that the container has been assigned in this networ. | [optional] [default to null]
+**SecondaryIPv6Addresses** | **[]string** | SecondaryIPv6Addresses is a list of extra IPv6 Addresses that the container has been assigned in this network. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **NoManageResolvConf** | **bool** | NoManageResolvConf indicates that the pod will not manage resolv.conf and instead each container will handle their own. | [optional] [default to null]
 **PortBindings** | [**map[string][]InspectHostPort**](array.md) | PortBindings are ports that will be forwarded to the infra container and then shared with the pod. | [optional] [default to null]
 **StaticIP** | [***[]int32**](array.md) |  | [optional] [default to null]
-**StaticMAC** | [***[]int32**](array.md) |  | [optional] [default to null]
+**StaticMAC** | **string** | StaticMAC is a static MAC address that will be assigned to the infra container and then used by the pod. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

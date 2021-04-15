@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Labels** | **map[string]string** | Container labels | [optional] [default to null]
 **OnBuild** | **string** | On-build arguments - presently unused. More of Buildah&#x27;s domain. | [optional] [default to null]
 **OpenStdin** | **bool** | Whether the container leaves STDIN open | [optional] [default to null]
+**Secrets** | [**[]InspectSecret**](InspectSecret.md) | Secrets are the secrets mounted in the container | [optional] [default to null]
 **StdinOnce** | **bool** | Whether STDIN is only left open once. Presently not supported by Podman, unused. | [optional] [default to null]
 **StopSignal** | **int32** | Container stop signal | [optional] [default to null]
 **SystemdMode** | **bool** | SystemdMode is whether the container is running in systemd mode. In systemd mode, the container configuration is customized to optimize running systemd in the container. | [optional] [default to null]

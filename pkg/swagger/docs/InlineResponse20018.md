@@ -3,15 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **string** | Date/Time the volume was created. | [optional] [default to null]
-**Driver** | **string** | Name of the volume driver used by the volume. | [default to null]
-**Labels** | **map[string]string** | User-defined key/value metadata. | [default to null]
-**Mountpoint** | **string** | Mount path of the volume on the host. | [default to null]
-**Name** | **string** | Name of the volume. | [default to null]
-**Options** | **map[string]string** | The driver specific options used when creating the volume. | [default to null]
-**Scope** | **string** | The level at which the volume exists. Either &#x60;global&#x60; for cluster-wide, or &#x60;local&#x60; for machine level. | [default to null]
-**Status** | [**map[string]interface{}**](interface{}.md) | Low-level details about the volume, provided by the volume driver. Details are returned as a map with key/value pairs: &#x60;{\&quot;key\&quot;:\&quot;value\&quot;,\&quot;key2\&quot;:\&quot;value2\&quot;}&#x60;.  The &#x60;Status&#x60; field is optional, and is omitted if the volume driver does not support this feature. | [optional] [default to null]
-**UsageData** | [***VolumeUsageData**](VolumeUsageData.md) |  | [optional] [default to null]
+**Attachable** | **bool** |  | [optional] [default to null]
+**CheckDuplicate** | **bool** | Check for networks with duplicate names. Network is primarily keyed based on a random ID and not on the name. Network name is strictly a user-friendly alias to the network which is uniquely identified using ID. And there is no guaranteed way to check for duplicates. Option CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions. | [optional] [default to null]
+**ConfigFrom** | [***ConfigReference**](ConfigReference.md) |  | [optional] [default to null]
+**ConfigOnly** | **bool** |  | [optional] [default to null]
+**Driver** | **string** |  | [optional] [default to null]
+**EnableIPv6** | **bool** |  | [optional] [default to null]
+**IPAM** | [***Ipam**](IPAM.md) |  | [optional] [default to null]
+**Ingress** | **bool** |  | [optional] [default to null]
+**Internal** | **bool** |  | [optional] [default to null]
+**Labels** | **map[string]string** |  | [optional] [default to null]
+**Options** | **map[string]string** |  | [optional] [default to null]
+**Scope** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
