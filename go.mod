@@ -4,5 +4,7 @@ go 1.15
 
 require (
 	github.com/antihax/optional v1.0.0
-	golang.org/x/oauth2 v0.0.0-20201109201403-9fd604954f58
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/oauth2 v0.5.0
+	google.golang.org/protobuf v1.28.1 // indirect
 )
